@@ -1,0 +1,13 @@
+aliasrc
+dircolors
+gemrc
+gitconfig
+gitignore
+inputrc
+pryrc
+railsrc
+tmux.conf
+vimrc
+bin
+git_template
+grc

@@ -1,0 +1,15 @@
+Lot's of stuff copied from
+
+Joshua Clayton https://github.com/joshuaclayton/dotfiles
+Kevin Faustino https://github.com/kfaustino/dotfiles
+Ryan Bates     https://github.com/ryanb/dotfiles
+and Othes
+
+Instalation
+===========
+
+rake install
+
+Dependency
+==========
+ruby & rake

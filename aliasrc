@@ -1,0 +1,46 @@
+# ruby/rails
+alias be="bundle exec"
+alias bake="bundle exec rake"
+alias date="gdate"
+
+alias doc="docker-compose"
+
+unalias gs
+alias ..="cd ../"
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias o=$EDITOR
+alias mkdir="mkdir -p"
+alias tmux="TERM=screen-256color-bce tmux"
+alias postgres.server="pg_ctl -D /usr/local/var/postgres"
+alias mongo.server="mongod --config /usr/local/etc/mongod.conf"
+
+if [[ $(uname) == Darwin ]]; then
+  alias ls="ls -G"
+elif [[ $(uname) == Linux ]]; then
+  alias ls="ls --color"
+fi
+
+alias deploy-heroku="git push heroku master && heroku run rake db:migrate"
+alias deploy-production="git push && be cap production deploy"
+
+alias rc="rails console"
+alias rdb="rails dbconsole"
+alias rs="rails server"
+
+alias vrc="ruby script/console --irb=pry"
+alias vrs="rackup"
+
+alias rspec="nocorrect rspec"
+alias bundle="nocorrect bundle"
+
+alias duf='sudo du -sk * | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)) {if($s<1024) {printf("%.1f",$s);print "$_\t$f"; last};$s=$s/1024}'\'
+
+# Tmux
+alias ta='tmux attach -d -t'
+alias ts='tmux new-session -s'
+alias tl='tmux list-sessions'
+
+alias rm-gems='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
+alias tasks='grep --exclude-dir=.git -rEI "TODO|FIXME|NOTE" . 2>/dev/null'
+

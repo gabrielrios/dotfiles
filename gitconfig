@@ -1,0 +1,140 @@
+[user]
+  name = Gabriel Rios
+  email = gabrielfalcaorios@gmail.com
+[color]
+  ui = 1
+[color "branch"]
+  current =yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+[alias]
+  a = add
+
+  co = checkout
+  nb = checkout -b
+
+  ci = commit
+  amend = commit --amend
+
+  st = status -sb
+
+  br = branch
+  b = branch -v
+  ba=for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+
+  l = log --graph --date=short
+  changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
+  short = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\"
+  changelog = log --pretty=format:\" * %s\"
+  diff-branch=!git log --name-status HEAD..
+
+  rc = rebase --continue
+  rs = rebase --skip
+  r = remote -v
+
+  unstage = reset HEAD
+  uncommit = reset --soft HEAD^
+  unmerge = reset --hard HEAD~1
+
+  cp = cherry-pick
+
+  rm-submodule = "!f(){ git rm -r --cached \"$1\";rm -r \"$1\";git config -f .gitmodules --remove-section \"submodule.$1\";git config -f .git/config --remove-section \"submodule.$1\";git add .gitmodules; }; f"
+
+  ctags = !.git/hooks/ctags
+
+  undo = reset --soft HEAD^
+  count = shortlog -sn
+  today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
+  yesterday = !git log --since=yesterday --until=midnight --author=\"$(git config user.name)\" --oneline
+  conflicts = diff --name-only --diff-filter=U
+
+  n = !"git ls-files | xargs notes | awk -F: '{ print $1,$2; print $3,$4; print $5}' | grcat conf.notes "
+
+  find-delete = log --diff-filter=D
+  log-blame=log -p -M --follow --stat --
+# The different cases are:
+# - dirty tree and dirty index
+# - dirty tree and clean index
+# - clean tree and dirty index
+#
+# We have to consider separate cases because the 'git rebase
+# --whitespace=fix' is not compatible with empty commits (adding
+# '--keep-empty' makes Git not fix the whitespace :P).
+fixws-global-tree-and-index = !"\
+  if (! git diff-files --quiet .) && \
+     (! git diff-index --quiet --cached HEAD) ; then \
+    git commit -m FIXWS_SAVE_INDEX && \
+    git add -u :/ && \
+    git commit -m FIXWS_SAVE_TREE && \
+    git rebase --whitespace=fix HEAD~2 && \
+    git reset HEAD~ && \
+    git reset --soft HEAD~ ; \
+  elif (! git diff-files --quiet .) ; then \
+    git add -u :/ && \
+    git commit -m FIXWS_SAVE_TREE && \
+    git rebase --whitespace=fix HEAD~ && \
+    git reset HEAD~ ; \
+  elif (! git diff-index --quiet --cached HEAD) ; then \
+    git commit -m FIXWS_SAVE_INDEX && \
+    git rebase --whitespace=fix HEAD~ && \
+    git reset --soft HEAD~ ; \
+  fi"
+[pager]
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
+[format]
+  ; pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
+[mergetool]
+  prompt = false
+[mergetool "vimdiff"]
+  cmd="vim -c 'Gdiff' $MERGED"
+  keepbackup=false
+[merge]
+  summary = true
+  verbosity = 1
+  tool = vimdiff
+  ff = true
+[apply]
+  whitespace = nowarn
+[brach]
+  autosetupmerge = true
+[core]
+  editor = vim
+	excludesfile = /Users/gabriel/.gitignore_global
+  autocrlf = false
+[advice]
+  statusHints = false
+[diff]
+  mnemonicprefix = true
+[rerere]
+  enabled = 1
+[push]
+  default = tracking
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[init]
+  templatedir = ~/.git_template
+[help]
+  autocorrect = 1
+[pack]
+	windowMemory = 200m
+	SizeLimit = 200m
+	threads = 5
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[url "git@gitlab.com:"]
+	insteadOf = https://gitlab.com/
