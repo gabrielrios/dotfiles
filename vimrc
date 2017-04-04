@@ -20,6 +20,7 @@ if dein#load_state('/Users/gabriel/Code/personal/dotfiles/./dein.vim')
 
   " You can specify revision/branch/tag.
   call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+  call dein#add('wakatime/vim-wakatime')
   call dein#add('vim-scripts/CSApprox', { 'rev': 'a2958096696f9132ef0ece44b3fab93dac6df8d0' })
   call dein#add('vim-scripts/HTML-AutoCloseTag', { 'rev': 'c2f6f59cf5c08dd487ef361f93ba09317a840e25' })
   call dein#add('smeggingsmegger/ag.vim', { 'rev': 'c3d096a0bd638718dd8a0fc80f2edeca82a1dbf9' })
@@ -503,6 +504,8 @@ let g:surround_61 = "<%= \r %>"   " =
 " ============================
 map ss :SplitjoinSplit<cr>
 map sj :SplitjoinJoin<cr>
+map <Leader>sb :set scb!<cr>
+
 
 " Idea from : http://www.charlietanksley.net/blog/blog/2011/10/18/vim-navigation-with-lustyexplorer-and-lustyjuggler/
 " Open CtrlP starting from a particular path, making it much
