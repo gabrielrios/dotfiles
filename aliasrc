@@ -5,7 +5,6 @@ alias date="gdate"
 
 alias doc="docker-compose"
 
-unalias gs
 alias ..="cd ../"
 alias ...="cd ../.."
 alias ....="cd ../../.."

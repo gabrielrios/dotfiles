@@ -58,6 +58,7 @@ if dein#load_state('/Users/gabriel/Code/personal/dotfiles/./dein.vim')
   call dein#add('tpope/vim-surround', { 'rev': 'e49d6c2459e0f5569ff2d533b4df995dd7f98313' })
   call dein#add('christoomey/vim-tmux-navigator', { 'rev': '74ee1dbc13bb774f5f63234c086ed2d48fa1fc32' })
   call dein#add('Shougo/vimproc.vim', { 'rev': 'c2f6b82af60a4e7acde0e8dc4e6b6f5dc1cc8e1d' })
+  call dein#add('rhysd/vim-crystal')
 
   " Required:
   call dein#end()
