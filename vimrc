@@ -59,6 +59,7 @@ if dein#load_state('/Users/gabriel/Code/personal/dotfiles/./dein.vim')
   call dein#add('christoomey/vim-tmux-navigator', { 'rev': '74ee1dbc13bb774f5f63234c086ed2d48fa1fc32' })
   call dein#add('Shougo/vimproc.vim', { 'rev': 'c2f6b82af60a4e7acde0e8dc4e6b6f5dc1cc8e1d' })
   call dein#add('rhysd/vim-crystal')
+  call dein#add('posva/vim-vue')
 
   " Required:
   call dein#end()
@@ -279,6 +280,9 @@ autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
 if has("gui_running")
   autocmd BufWritePre * :call TrimWhiteSpace()
 endif
+
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+let g:syntastic_javascript_checkers=['eslint']
 
 set autoread
 
