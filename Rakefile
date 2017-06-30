@@ -17,7 +17,8 @@ end
 desc "Remove all dotfies"
 task :uninstall do
   files.each do |file|
-    Installer.new.unlink(target_path(file))
+  #  Installer.new.unlink(target_path(file))
+    FileUtils.rm target_path(file)
   end
 end
 
@@ -25,9 +26,6 @@ class Installer
   def symlink(target, link)
     if File.symlink?(link)
       unlink(link)
-#    elsif File.exist?(link)
-#      puts "ERROR: File exists: #{link}"
-#      exit 1
     end
     puts "Symlinking #{link} => #{target}"
     File.symlink(target, link)
