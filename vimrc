@@ -60,6 +60,7 @@ if dein#load_state('/Users/gabriel/Code/personal/dotfiles/./dein.vim')
   call dein#add('Shougo/vimproc.vim', { 'rev': 'c2f6b82af60a4e7acde0e8dc4e6b6f5dc1cc8e1d' })
   call dein#add('rhysd/vim-crystal')
   call dein#add('posva/vim-vue')
+  call dein#add('thoughtbot/vim-rspec')
 
   " Required:
   call dein#end()
@@ -452,10 +453,16 @@ map <Leader>c :Rcontroller<CR>
 map <Leader>v :Rview<CR>
 map <Leader>rm :Rake db:migrate<CR>
 map <Leader>rr :Rake routes<CR>
-map <Leader>rt :Rake db:test:prepare<CR>
 map <Leader>rds :Rake db:reset<CR>
 map <Leader>rc :Dispatch bundle exec rails c<CR>
-map <leader>rs :Dispatch bundle exec rspec
+
+let g:rspec_command = "Dispatch rspec {spec}"
+
+" RSpec.vim mappings
+map <Leader>rt :call RunCurrentSpecFile()<CR>
+map <Leader>rs :call RunNearestSpec()<CR>
+map <Leader>rl :call RunLastSpec()<CR>
+map <Leader>ra :call RunAllSpecs()<CR>
 
 "Git mappings
 map <Leader>gs :Gstatus<CR>
