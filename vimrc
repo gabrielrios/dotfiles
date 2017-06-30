@@ -509,7 +509,45 @@ let g:surround_61 = "<%= \r %>"   " =
 " ============================
 map ss :SplitjoinSplit<cr>
 map sj :SplitjoinJoin<cr>
-map <Leader>sb :set scb!<cr>
+function! ScrollBind(...)
+  " Description: Toggle scrollbind amongst window splits
+  " Arguments: 'mode' ( optional ) If not given, toggle scrollbind
+  "               = 0 - Disable scrollbind
+  "                 1 - Enable  scrollbind
+  let l:curr_bufnr = bufnr('%')
+  let g:scb_status = ( a:0 > 0 ? a:1 : !exists('g:scb_status') || !g:scb_status )
+  if !exists('g:scb_pos') | let g:scb_pos = {} | endif
+
+  let l:loop_cont = 1
+  while l:loop_cont
+    setl noscb
+    if !g:scb_status && has_key( g:scb_pos, bufnr('%') )
+      call setpos( '.', g:scb_pos[ bufnr('%') ] )
+    endif
+    execute "wincmd w"
+    let l:loop_cont = !( l:curr_bufnr == bufnr('%') )
+  endwhile
+
+  if g:scb_status
+    let l:loop_cont = 1
+    while l:loop_cont
+      let g:scb_pos[ bufnr('%') ] = getpos( '.' )
+      normal! gg
+      setl scb
+      execute "wincmd w"
+      let l:loop_cont = !( l:curr_bufnr == bufnr('%') )
+    endwhile
+  else
+    let g:scb_pos = {}
+  endif
+
+  "if g:scb_status
+  "  echom "Enabling scrollbind"
+  "else
+  "  echom "Disabling scrollbind"
+  "endif
+endfunction
+nmap <silent> <leader>sb :call ScrollBind()<CR>
 
 
 " Idea from : http://www.charlietanksley.net/blog/blog/2011/10/18/vim-navigation-with-lustyexplorer-and-lustyjuggler/
