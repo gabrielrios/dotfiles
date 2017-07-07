@@ -24,7 +24,7 @@ if dein#load_state('/Users/gabriel/Code/personal/dotfiles/./dein.vim')
   call dein#add('vim-scripts/CSApprox', { 'rev': 'a2958096696f9132ef0ece44b3fab93dac6df8d0' })
   call dein#add('vim-scripts/HTML-AutoCloseTag', { 'rev': 'c2f6f59cf5c08dd487ef361f93ba09317a840e25' })
   call dein#add('smeggingsmegger/ag.vim', { 'rev': 'c3d096a0bd638718dd8a0fc80f2edeca82a1dbf9' })
-  call dein#add('chriskempson/base16-vim', { 'rev': '01408a8461923ed30957285b00e3da67489c687b' })
+  call dein#add('chriskempson/base16-vim')
   call dein#add('kien/ctrlp.vim', { 'rev': '564176f01d7f3f7f8ab452ff4e1f5314de7b0981' })
   call dein#add('gregsexton/gitv', { 'rev': 'f0616624ee77e3a29a5d5faba02a5453bc45681b' })
   call dein#add('Shutnik/jshint2.vim', { 'rev': 'dfad0431f0475b745cff7d2a4551b3619039edd9' })
@@ -36,7 +36,7 @@ if dein#load_state('/Users/gabriel/Code/personal/dotfiles/./dein.vim')
   call dein#add('godlygeek/tabular', { 'rev': '00e1e7fcdbc6d753e0bc8043e0d2546fa81bf367' })
   call dein#add('majutsushi/tagbar', { 'rev': '7b36c46d17d57db34fdb0adac9ba6382d0bb5e66' })
   call dein#add('bling/vim-airline', { 'rev': '4d0c4f6b1e3fee30873b0c9734fbe83f4d74b81c' })
-  call dein#add('vim-airline/vim-airline-themes', { 'rev': '796478723c01a275269b96f63ee5cd5b44a342f4' })
+  call dein#add('vim-airline/vim-airline-themes')
   call dein#add('tpope/vim-bundler', { 'rev': 'b42217a20cd4cac5a00096dc4e98d2497c21b3fe' })
   call dein#add('gorodinskiy/vim-coloresque', { 'rev': '0c21b1469993e610600e88e734ffe90b9c10a514' })
   call dein#add('tpope/vim-commentary', { 'rev': '73e0d9a9d1f51b6cc9dc965f62669194ae851cb1' })
@@ -210,7 +210,7 @@ set titlestring=%F
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
 
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'onedark'
 let g:airline_enable_branch = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -376,8 +376,8 @@ set sidescrolloff=15
 set sidescroll=1
 
 " Theming
-set background=light
-colorscheme base16-solarized
+set background=dark
+colorscheme base16-default-dark
 set laststatus=2
 set cursorline
 set list!                       " Display unprintable characters
@@ -582,7 +582,10 @@ cmap w!! w !sudo tee
 map <Leader>ff gg=G
 map <Leader>d :Dash<Space>
 
-let base16colorspace=256  " Access colors present in 256 colorspace
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 set noshowmode
 
 " Reselect visual block after indent/outdent
