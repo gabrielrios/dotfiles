@@ -9,36 +9,30 @@ brew upgrade
 # Install GNU core utilities (those that come with OS X are outdated)
 brew install coreutils
 echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
+
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
 brew install findutils
-# Install Bash 4
-brew install bash
+
+# Install zsh
+brew install zsh
 
 # Install wget with IRI support
 brew install wget --enable-iri
 
-# Install RingoJS and Narwhal
-# Note that the order in which these are installed is important; see http://git.io/brew-narwhal-ringo.
-# brew install ringojs
-# brew install narwhal
+# Install languages
+brew install node crystal-lang elm
 
-# Install more recent versions of some OS X tools
-# brew tap homebrew/dupes
-# brew install homebrew/dupes/grep
-# brew tap josegonzalez/homebrew-php
-# brew install php54
+# Install databases
+brew install mysql postgresql redis
 
-# These two formulae didn’t work well last time I tried them:
-#brew install homebrew/dupes/vim
-#brew install homebrew/dupes/screen
+# Install tools
+brew install git git-lfs exuberant-ctags heroku httpie
+brew install macvim ssh-copy-id the_silver_searcher tmux tig
+brew install vim yarn
+
 
 # Install everything else
-brew install agr
-#brew install exiv2
-brew install git
-brew install imagemagick
-brew install node
-brew install tree
+#brew install agr
 
 # Remove outdated versions from the cellar
 brew cleanup

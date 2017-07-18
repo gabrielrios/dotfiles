@@ -2,6 +2,7 @@
 alias be="bundle exec"
 alias bake="bundle exec rake"
 alias date="gdate"
+alias cr="crystal"
 
 alias doc="docker-compose"
 
@@ -43,3 +44,5 @@ alias tl='tmux list-sessions'
 alias rm-gems='gem list | cut -d" " -f1 | xargs gem uninstall -aIx'
 alias tasks='grep --exclude-dir=.git -rEI "TODO|FIXME|NOTE" . 2>/dev/null'
 
+
+alias readlink=greadlink
