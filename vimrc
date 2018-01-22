@@ -173,6 +173,7 @@ if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
     set guifont=Menlo:h12
     set transparency=0
+    set clipboard=unnamed
   endif
 else
   let g:CSApprox_loaded = 1
@@ -456,7 +457,8 @@ map <Leader>rr :Rake routes<CR>
 map <Leader>rds :Rake db:reset<CR>
 map <Leader>rc :Dispatch bundle exec rails c<CR>
 
-let g:rspec_command = "Dispatch rspec {spec}"
+let g:rspec_command = "Dispatch bundle exec rspec {spec}"
+let g:rspec_runner = "os_x_iterm2"
 
 " RSpec.vim mappings
 map <Leader>rt :call RunCurrentSpecFile()<CR>
