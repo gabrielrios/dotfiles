@@ -46,3 +46,5 @@ alias tasks='grep --exclude-dir=.git -rEI "TODO|FIXME|NOTE" . 2>/dev/null'
 
 
 alias readlink=greadlink
+
+alias pym='python3 manage.py'

@@ -17,7 +17,7 @@
   co = checkout
   nb = checkout -b
 
-  ci = commit
+  ci = commit --verbose
   amend = commit --amend
 
   st = status -sb
@@ -51,6 +51,7 @@
   today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
   yesterday = !git log --since=yesterday --until=midnight --author=\"$(git config user.name)\" --oneline
   conflicts = diff --name-only --diff-filter=U
+  biweekly = !git short --since=2.weeks
 
   n = !"git ls-files | xargs notes | awk -F: '{ print $1,$2; print $3,$4; print $5}' | grcat conf.notes "
 
@@ -136,5 +137,6 @@ fixws-global-tree-and-index = !"\
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 [url "git@gitlab.com:"]
 	insteadOf = https://gitlab.com/

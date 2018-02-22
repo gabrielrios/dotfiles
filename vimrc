@@ -20,6 +20,7 @@ if dein#load_state('/Users/gabriel/Code/personal/dotfiles/./dein.vim')
 
   " You can specify revision/branch/tag.
   call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+  call dein#add('jgdavey/tslime.vim')
   call dein#add('wakatime/vim-wakatime')
   call dein#add('vim-scripts/CSApprox', { 'rev': 'a2958096696f9132ef0ece44b3fab93dac6df8d0' })
   call dein#add('vim-scripts/HTML-AutoCloseTag', { 'rev': 'c2f6f59cf5c08dd487ef361f93ba09317a840e25' })
@@ -61,6 +62,8 @@ if dein#load_state('/Users/gabriel/Code/personal/dotfiles/./dein.vim')
   call dein#add('rhysd/vim-crystal')
   call dein#add('posva/vim-vue')
   call dein#add('thoughtbot/vim-rspec')
+  call dein#add('elmcast/elm-vim')
+  call dein#add('kylef/apiblueprint.vim')
 
   " Required:
   call dein#end()
@@ -77,18 +80,18 @@ if dein#check_install()
 endif
 
 
-    let g:smartgf_create_default_mappings = 0
-    let g:smartgf_enable_gems_search = 0
-    let g:smartgf_auto_refresh_ctags = 0
-    let g:smartgf_max_entries_per_page = 9
-    let g:smartgf_divider_width = 5
-    let g:smartgf_extensions = ['.js', '.coffee', '.json']
+let g:smartgf_create_default_mappings = 0
+let g:smartgf_enable_gems_search = 0
+let g:smartgf_auto_refresh_ctags = 0
+let g:smartgf_max_entries_per_page = 9
+let g:smartgf_divider_width = 5
+let g:smartgf_extensions = ['.js', '.coffee', '.json']
 
-    nmap gs <Plug>(smartgf-search)
-    vmap gs <Plug>(smartgf-search)
-    nmap gS <Plug>(smartgf-search-unfiltered)
-    vmap gS <Plug>(smartgf-search-unfiltered)
-    map <Leader>gf :SmargfRefreshTags<CR>
+nmap gs <Plug>(smartgf-search)
+vmap gs <Plug>(smartgf-search)
+nmap gS <Plug>(smartgf-search-unfiltered)
+vmap gS <Plug>(smartgf-search-unfiltered)
+map <Leader>gf :SmargfRefreshTags<CR>
 
 "" Include user's extra bundle
 if filereadable(expand("~/.vimrc.local.bundles"))
@@ -283,7 +286,7 @@ if has("gui_running")
   autocmd BufWritePre * :call TrimWhiteSpace()
 endif
 
-autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+" autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 let g:syntastic_javascript_checkers=['eslint']
 
 set autoread
@@ -331,7 +334,7 @@ let g:syntastic_check_on_wq = 0
 let g:airline_enable_syntastic = 1
 
 "" Remove trailing whitespace on <leader>S
-nnoremap <silent> <leader>S :call TrimWhiteSpace()<cr>:let @/=''<CR>
+" nnoremap <silent> <leader>S :call TrimWhiteSpace()<cr>:let @/=''<CR>
 
 "" Old Vimrc
 
@@ -377,8 +380,8 @@ set sidescrolloff=15
 set sidescroll=1
 
 " Theming
-set background=dark
-colorscheme base16-default-dark
+set background=light
+colorscheme base16-default-light
 set laststatus=2
 set cursorline
 set list!                       " Display unprintable characters
@@ -436,8 +439,8 @@ autocmd BufReadPost *
 autocmd BufWritePre * :%s/\s\+$//e
 
 " spellcheck
-autocmd Filetype gitcommit setlocal spell textwidth=72
-autocmd Filetype markdown setlocal spell textwidth=72
+autocmd Filetype gitcommit setlocal spell textwidth=72 spelllang=pt_br
+autocmd Filetype markdown setlocal spell textwidth=72 spelllang=pt_br
 augroup golang
   au BufNewFile,BufRead *.go setlocal noet ts=2 sw=2 sts=2
   au Filetype go setlocal nolist
@@ -457,8 +460,9 @@ map <Leader>rr :Rake routes<CR>
 map <Leader>rds :Rake db:reset<CR>
 map <Leader>rc :Dispatch bundle exec rails c<CR>
 
-let g:rspec_command = "Dispatch bundle exec rspec {spec}"
-let g:rspec_runner = "os_x_iterm2"
+let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
+let g:tslime_always_current_session = 1
+let g:tslime_always_current_window = 1
 
 " RSpec.vim mappings
 map <Leader>rt :call RunCurrentSpecFile()<CR>
@@ -487,9 +491,10 @@ vmap <leader>t# :Tab /#
 
 "Edit Files Shortcuts
 nnoremap <leader>ev :tabedit $MYVIMRC<cr>
-nnoremap <leader>n :tabedit ~/Code/notes.md<cr>
+nnoremap <leader>n :tabedit ~/OneDrive/notes.md<cr>
 nnoremap <leader>p :PreviewMarkdown<cr>
 nnoremap <leader>jo :execute "edit" "~/OneDrive/Journal/" . strftime("%y-%m-%d.md")<cr>
+nnoremap <leader>sp :tabedit ~/OndDrive/wet-stone.md<cr>
 
 " Surrounding
 map <Leader># ysiw#
@@ -550,13 +555,13 @@ function! ScrollBind(...)
     let g:scb_pos = {}
   endif
 
-  "if g:scb_status
-  "  echom "Enabling scrollbind"
-  "else
-  "  echom "Disabling scrollbind"
-  "endif
+  if g:scb_status
+    echom "Enabling scrollbind"
+  else
+    echom "Disabling scrollbind"
+  endif
 endfunction
-nmap <silent> <leader>sb :call ScrollBind()<CR>
+nmap <silent> <Leader>sb :call ScrollBind()<CR>
 
 
 " Idea from : http://www.charlietanksley.net/blog/blog/2011/10/18/vim-navigation-with-lustyexplorer-and-lustyjuggler/
@@ -605,4 +610,3 @@ set expandtab
 
 " Start terminal command with a single bang
 nnoremap ! :!
-
