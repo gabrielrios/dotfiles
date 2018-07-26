@@ -63,7 +63,13 @@ if dein#load_state('/Users/gabriel/Code/personal/dotfiles/./dein.vim')
   call dein#add('posva/vim-vue')
   call dein#add('thoughtbot/vim-rspec')
   call dein#add('elmcast/elm-vim')
-  call dein#add('kylef/apiblueprint.vim')
+  call dein#add('sheerun/apiblueprint.vim')
+  call dein#add('plasticboy/vim-markdown')
+  call dein#add('elzr/vim-json')
+  call dein#add('https://github.com/tbastos/vim-lua')
+
+  let g:vim_markdown_json_frontmatter = 1
+  let g:vim_json_syntax_conceal = 0
 
   " Required:
   call dein#end()

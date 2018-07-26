@@ -51,7 +51,8 @@
   today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
   yesterday = !git log --since=yesterday --until=midnight --author=\"$(git config user.name)\" --oneline
   conflicts = diff --name-only --diff-filter=U
-  biweekly = !git short --since=2.weeks
+  biweekly = !git changelog --since=2.weeks
+  mybiweekly = !git biweekly --author=\"$(git config user.name)\"
 
   n = !"git ls-files | xargs notes | awk -F: '{ print $1,$2; print $3,$4; print $5}' | grcat conf.notes "
 
@@ -89,7 +90,7 @@ fixws-global-tree-and-index = !"\
   show = diff-highlight | less
   diff = diff-highlight | less
 [format]
-  ; pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
+  pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [mergetool]
   prompt = false
 [mergetool "vimdiff"]
