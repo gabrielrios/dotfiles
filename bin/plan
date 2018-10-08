@@ -1,0 +1,11 @@
+#!/bin/bash
+
+currdate=$(gdate +"%Y-%m-%d")
+lastdate=$(gdate --date='yesterday' +"%Y-%m-%d")
+
+if [ $(gdate --date='yesterday' +"%A") == 'Sunday' ]
+then
+  lastdate=$(gdate --date='last friday' +"%Y-%m-%d")
+fi
+
+vim -O ~/OneDrive/Notes/$currdate.md ~/OneDrive/Notes/$lastdate.md

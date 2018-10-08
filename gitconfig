@@ -86,9 +86,9 @@ fixws-global-tree-and-index = !"\
     git reset --soft HEAD~ ; \
   fi"
 [pager]
+  diff = diff-so-fancy | less --tabs=1,5 -RFX
+  show = diff-so-fancy | less --tabs=1,5 -RFX
   log = diff-highlight | less
-  show = diff-highlight | less
-  diff = diff-highlight | less
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [mergetool]

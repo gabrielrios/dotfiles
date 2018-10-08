@@ -182,7 +182,6 @@ if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
     set guifont=Menlo:h12
     set transparency=0
-    set clipboard=unnamed
   endif
 else
   let g:CSApprox_loaded = 1
@@ -195,6 +194,7 @@ else
     endif
   endif
 endif
+set clipboard+=unnamed
 
 if &term =~ '256color'
   set t_ut=
