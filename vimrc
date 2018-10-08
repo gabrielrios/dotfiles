@@ -3,88 +3,79 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-" Required:
-set runtimepath+=/Users/gabriel/Code/personal/dotfiles/./dein.vim/repos/github.com/Shougo/dein.vim
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Required:
-if dein#load_state('/Users/gabriel/Code/personal/dotfiles/./dein.vim')
-  call dein#begin('/Users/gabriel/Code/personal/dotfiles/./dein.vim')
-
-  " Let dein manage dein
-  " Required:
-  call dein#add('/Users/gabriel/Code/personal/dotfiles/./dein.vim/repos/github.com/Shougo/dein.vim')
+call plug#begin('~/.vim/plugged')
 
   " Add or remove your plugins here:
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
+  Plug 'Shougo/neosnippet.vim'
+  Plug 'Shougo/neosnippet-snippets'
 
   " You can specify revision/branch/tag.
-  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-  call dein#add('jgdavey/tslime.vim')
-  call dein#add('wakatime/vim-wakatime')
-  call dein#add('vim-scripts/CSApprox', { 'rev': 'a2958096696f9132ef0ece44b3fab93dac6df8d0' })
-  call dein#add('vim-scripts/HTML-AutoCloseTag', { 'rev': 'c2f6f59cf5c08dd487ef361f93ba09317a840e25' })
-  call dein#add('smeggingsmegger/ag.vim', { 'rev': 'c3d096a0bd638718dd8a0fc80f2edeca82a1dbf9' })
-  call dein#add('chriskempson/base16-vim')
-  call dein#add('kien/ctrlp.vim', { 'rev': '564176f01d7f3f7f8ab452ff4e1f5314de7b0981' })
-  call dein#add('gregsexton/gitv', { 'rev': 'f0616624ee77e3a29a5d5faba02a5453bc45681b' })
-  call dein#add('Shutnik/jshint2.vim', { 'rev': 'dfad0431f0475b745cff7d2a4551b3619039edd9' })
-  call dein#add('scrooloose/nerdtree', { 'rev': '2e2b649232d6ae4d02d74793e5da0ee08480ad8d' })
-  call dein#add('stefandtw/quickfix-reflector.vim', { 'rev': '8f2379082de788aef58be0ed1fdbf8f056d56437' })
-  call dein#add('gorkunov/smartgf.vim', { 'rev': '1f4c4c74089a6dad25ddf49f32bf07e662435fbc' })
-  call dein#add('AndrewRadev/splitjoin.vim', { 'rev': 'a206dbaddef39ac06aee880fbb7a7256bce92899' })
-  call dein#add('scrooloose/syntastic', { 'rev': 'cee74e0c1af934065fd1b3046e53cda76574f703' })
-  call dein#add('godlygeek/tabular', { 'rev': '00e1e7fcdbc6d753e0bc8043e0d2546fa81bf367' })
-  call dein#add('majutsushi/tagbar', { 'rev': '7b36c46d17d57db34fdb0adac9ba6382d0bb5e66' })
-  call dein#add('bling/vim-airline', { 'rev': '4d0c4f6b1e3fee30873b0c9734fbe83f4d74b81c' })
-  call dein#add('vim-airline/vim-airline-themes')
-  call dein#add('tpope/vim-bundler', { 'rev': 'b42217a20cd4cac5a00096dc4e98d2497c21b3fe' })
-  call dein#add('gorodinskiy/vim-coloresque', { 'rev': '0c21b1469993e610600e88e734ffe90b9c10a514' })
-  call dein#add('tpope/vim-commentary', { 'rev': '73e0d9a9d1f51b6cc9dc965f62669194ae851cb1' })
-  call dein#add('hail2u/vim-css3-syntax', { 'rev': '5c81b99e3e73908d042c76e48f4de1c5ed12bb30' })
-  call dein#add('tpope/vim-dispatch', { 'rev': '5f5c22c9ed48ee64fc5f02ac3acd543b97732fe8' })
-  call dein#add('Lokaltog/vim-easymotion', { 'rev': '5c6f3cd9a713491e6b32752a05c45198aa91540a' })
-  call dein#add('elixir-lang/vim-elixir', { 'rev': '32a1027d90def835f70b6833397182307a417b1c' })
-  call dein#add('tpope/vim-endwise', { 'rev': '0067ceda37725d01b7bd5bf249d63b1b5d4e2ab4' })
-  call dein#add('tpope/vim-eunuch', { 'rev': '5ee2b82b565e6c6d80f1cb7735c78f66a159b198' })
-  call dein#add('tpope/vim-fugitive', { 'rev': '50cc268d29c65738dab9eda8354d9387f1628519' })
-  call dein#add('airblade/vim-gitgutter', { 'rev': 'b5f23e986747a6f4b1dc1196d2a5bd3dc7c8c2b6' })
-  call dein#add('fatih/vim-go', { 'rev': '08c881dea2eee7ef208a8f27131b6696478bfb99' })
-  call dein#add('jeffkreeftmeijer/vim-numbertoggle', { 'rev': 'c4d0aaccce5798fd55649d169de262f3dac06312' })
-  call dein#add('sheerun/vim-polyglot', { 'rev': '1422f7a75ce0b382d601238c5979b04473b9021e' })
-  call dein#add('yaymukund/vim-rabl', { 'rev': '7e502e0c8ae360b46005ec9e3bebf164eb87bfb0' })
-  call dein#add('tpope/vim-rails', { 'rev': 'b5d8d50e1c3d4c99b0d128fa232dde9c43219833' })
-  call dein#add('tpope/vim-rake', { 'rev': '82ad45543f0d13dfa7d3f59ca4cd54d0e145417f' })
-  call dein#add('vim-ruby/vim-ruby', { 'rev': 'e667558961206e152764625383d661e1e21e8e46' })
-  call dein#add('tpope/vim-surround', { 'rev': 'e49d6c2459e0f5569ff2d533b4df995dd7f98313' })
-  call dein#add('christoomey/vim-tmux-navigator', { 'rev': '74ee1dbc13bb774f5f63234c086ed2d48fa1fc32' })
-  call dein#add('Shougo/vimproc.vim', { 'rev': 'c2f6b82af60a4e7acde0e8dc4e6b6f5dc1cc8e1d' })
-  call dein#add('rhysd/vim-crystal')
-  call dein#add('posva/vim-vue')
-  call dein#add('thoughtbot/vim-rspec')
-  call dein#add('elmcast/elm-vim')
-  call dein#add('sheerun/apiblueprint.vim')
-  call dein#add('plasticboy/vim-markdown')
-  call dein#add('elzr/vim-json')
-  call dein#add('https://github.com/tbastos/vim-lua')
+  Plug 'Shougo/vimshell'
+  Plug 'jgdavey/tslime.vim'
+  Plug 'wakatime/vim-wakatime'
+  Plug 'vim-scripts/CSApprox'
+  Plug 'vim-scripts/HTML-AutoCloseTag'
+  Plug 'smeggingsmegger/ag.vim'
+  Plug 'chriskempson/base16-vim'
+  Plug 'kien/ctrlp.vim'
+  Plug 'gregsexton/gitv'
+  Plug 'Shutnik/jshint2.vim'
+  Plug 'scrooloose/nerdtree'
+  Plug 'stefandtw/quickfix-reflector.vim'
+  Plug 'gorkunov/smartgf.vim'
+  Plug 'AndrewRadev/splitjoin.vim'
+  Plug 'scrooloose/syntastic'
+  Plug 'godlygeek/tabular'
+  Plug 'majutsushi/tagbar'
+  Plug 'bling/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'tpope/vim-bundler'
+  Plug 'gorodinskiy/vim-coloresque'
+  Plug 'tpope/vim-commentary'
+  Plug 'hail2u/vim-css3-syntax'
+  Plug 'tpope/vim-dispatch'
+  Plug 'Lokaltog/vim-easymotion'
+  Plug 'elixir-lang/vim-elixir'
+  Plug 'tpope/vim-endwise'
+  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-fugitive'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'fatih/vim-go'
+  Plug 'jeffkreeftmeijer/vim-numbertoggle'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'yaymukund/vim-rabl'
+  Plug 'tpope/vim-rails'
+  Plug 'tpope/vim-rake'
+  Plug 'vim-ruby/vim-ruby'
+  Plug 'tpope/vim-surround'
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'Shougo/vimproc.vim'
+  Plug 'rhysd/vim-crystal'
+  Plug 'posva/vim-vue'
+  Plug 'thoughtbot/vim-rspec'
+  Plug 'elmcast/elm-vim'
+  Plug 'sheerun/apiblueprint.vim'
+  Plug 'plasticboy/vim-markdown'
+  Plug 'elzr/vim-json'
+  Plug 'https://github.com/tbastos/vim-lua'
 
   let g:vim_markdown_json_frontmatter = 1
   let g:vim_json_syntax_conceal = 0
 
   " Required:
-  call dein#end()
-  call dein#save_state()
-endif
+call plug#end()
 
 " Required:
 filetype plugin indent on
 syntax enable
 
 " If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
-
 
 let g:smartgf_create_default_mappings = 0
 let g:smartgf_enable_gems_search = 0
