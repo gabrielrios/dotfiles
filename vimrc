@@ -585,6 +585,7 @@ map <Leader>jT :CtrlP test<CR>
 
 cmap w!! w !sudo tee
 map <Leader>ff gg=G
+nmap =j :%!python -m json.tool<CR>
 map <Leader>d :Dash<Space>
 
 if filereadable(expand("~/.vimrc_background"))
@@ -608,3 +609,5 @@ set expandtab
 
 " Start terminal command with a single bang
 nnoremap ! :!
+
+
