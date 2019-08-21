@@ -58,18 +58,21 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/vimproc.vim'
   Plug 'rhysd/vim-crystal'
   Plug 'posva/vim-vue'
-  Plug 'thoughtbot/vim-rspec'
+  Plug 'janko/vim-test'
   Plug 'elmcast/elm-vim'
   Plug 'sheerun/apiblueprint.vim'
   Plug 'plasticboy/vim-markdown'
   Plug 'elzr/vim-json'
   Plug 'https://github.com/tbastos/vim-lua'
+  Plug 'killphi/vim-ruby-refactoring'
 
   let g:vim_markdown_json_frontmatter = 1
   let g:vim_json_syntax_conceal = 0
 
   " Required:
 call plug#end()
+
+let test#strategy = "tslime"
 
 " Required:
 filetype plugin indent on
@@ -457,16 +460,31 @@ map <Leader>rr :Rake routes<CR>
 map <Leader>rds :Rake db:reset<CR>
 map <Leader>rc :Dispatch bundle exec rails c<CR>
 
-let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
+" let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
+let g:rubocop_command = 'call Send_to_Tmux("bundle exec rubocop {file}\n")'
+
+function! RubocopCurrentFilePath()
+  return @%
+endfunction
+
+function! RunRubocop()
+  let rspec_command = substitute(g:rubocop_command, "{file}", RubocopCurrentFilePath(), "g")
+
+  execute rspec_command
+endfunction
+
 let g:tslime_always_current_session = 1
 let g:tslime_always_current_window = 1
 nmap <Leader>tv <Plug>SetTmuxVars
+nmap <Leader>rr :call RunRubocop()<CR>
 
-" RSpec.vim mappings
-map <Leader>rt :call RunCurrentSpecFile()<CR>
-map <Leader>rs :call RunNearestSpec()<CR>
-map <Leader>rl :call RunLastSpec()<CR>
-map <Leader>ra :call RunAllSpecs()<CR>
+nmap <silent> <Leader>rs :TestNearest<CR>
+nmap <silent> <Leader>rt :TestFile<CR>
+nmap <silent> <Leader>ra :TestSuite<CR>
+nmap <silent> <Leader>rl :TestLast<CR>
+nmap <silent> <Leader>rv :TestVisit<CR>
+
+nnoremap <leader>rel  :RExtractLet<cr>
 
 "Git mappings
 map <Leader>gs :Gstatus<CR>

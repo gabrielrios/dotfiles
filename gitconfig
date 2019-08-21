@@ -111,8 +111,9 @@ fixws-global-tree-and-index = !"\
   autocrlf = false
 [advice]
   statusHints = false
+	ignoredHook = false
 [diff]
-  mnemonicprefix = true
+  mnemonicprefix = false
 [rerere]
   enabled = 1
 [push]
