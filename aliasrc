@@ -24,9 +24,9 @@ fi
 alias deploy-heroku="git push heroku master && heroku run rake db:migrate"
 alias deploy-production="git push && be cap production deploy"
 
-alias rc="rails console"
-alias rdb="rails dbconsole"
-alias rs="rails server"
+alias rc="be rails console"
+alias rdb="be rails dbconsole"
+alias rs="be rails server"
 
 alias vrc="ruby script/console --irb=pry"
 alias vrs="rackup"
@@ -48,3 +48,6 @@ alias tasks='grep --exclude-dir=.git -rEI "TODO|FIXME|NOTE" . 2>/dev/null'
 alias readlink=greadlink
 
 alias pym='python3 manage.py'
+
+alias vim='nvim'
+alias cat='bat'
