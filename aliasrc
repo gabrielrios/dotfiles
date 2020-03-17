@@ -49,5 +49,7 @@ alias readlink=greadlink
 
 alias pym='python3 manage.py'
 
-alias vim='nvim'
+alias vim='emacsclient -n'
 alias cat='bat'
+
+alias fmtjson='python -mjson.tool'

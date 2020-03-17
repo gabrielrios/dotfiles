@@ -4,4 +4,4 @@
 :benchmark: false
 :bulk_threshold: 1000
 :verbose: true
-gem: -N
+gem: -N --no-document --no-rdoc --no-ri
