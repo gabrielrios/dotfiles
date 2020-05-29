@@ -379,7 +379,7 @@ set colorcolumn=80            " Line Witdth = 80
 set lazyredraw
 
 " (Hopefully) removes the delay when hitting esc in insert mode
-set noesckeys
+" set noesckeys
 set ttimeout
 set ttimeoutlen=1
 
