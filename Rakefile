@@ -5,9 +5,9 @@ files = File.new(File.join(pwd, "MANIFEST"), "r").read.split("\n")
 
 desc "install the dotfiles into user's home directory"
 task :install do
-  install_rbenv_and_plugins
-  install_oh_my_zsh
-  switch_to_zsh
+#  install_rbenv_and_plugins
+#  install_oh_my_zsh
+#  switch_to_zsh
 
   files.each do |file|
     Installer.new.symlink(File.join(pwd, file), target_path(file))
