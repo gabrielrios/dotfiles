@@ -345,8 +345,10 @@ nnoremap <S-Tab> gT
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""' "Use silver searcher as ctrlp command for faster search
 let g:ctrlp_use_caching = 0
+set grepprg=rg\ --color=never
+let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 noremap <C-b> :CtrlPBuffer<CR>
 noremap <C-t> :CtrlPTag<CR>
@@ -458,7 +460,9 @@ map <Leader>w :bd<CR>
 let g:ctrlp_map = '<c-p>'
 map <C-t> :CtrlPTag<cr>
 map <C-b> :CtrlPBuffer<cr>
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""' "Use silver searcher as ctrlp command for faster search
+set grepprg=rg\ --color=never
+let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+let g:ctrlp_use_caching = 0
 
 " Tagbar
 let g:tagbar_left = 1
