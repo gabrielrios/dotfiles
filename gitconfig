@@ -142,3 +142,6 @@ fixws-global-tree-and-index = !"\
 	process = git-lfs filter-process
 [url "git@gitlab.com:"]
 	insteadOf = https://gitlab.com/
+
+[interactive]
+  diffFilter = "$(git --exec-path | sed 's/libexec/share/')/contrib/diff-highlight/diff-highlight | less -FRX --tabs=4"
