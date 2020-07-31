@@ -19,20 +19,23 @@ brew install zsh
 # Install wget with IRI support
 brew install wget --enable-iri
 
-# Install languages
-brew install node crystal-lang elm
+# Install languages manager
+brew install asdf
 
 # Install databases
-brew install mysql postgresql redis
+brew install mysql@5.7 postgresql redis
 
 # Install tools
 brew install git git-lfs exuberant-ctags heroku httpie
-brew install macvim ssh-copy-id the_silver_searcher tmux tig
-brew install vim yarn
+brew install ssh-copy-id ripgrep tmux tig fd
+brew install nvim yarn bat aws-cli jq
+brew install diff-so-fancy
 
+brew install emacs-plus@27
 
-# Install everything else
-#brew install agr
+# TODO: Clone doom-config and install doom-emacs
+# TODO: Clone other dotfiles
+
 
 # Remove outdated versions from the cellar
 brew cleanup
