@@ -1,7 +1,7 @@
 # ruby/rails
 alias be="bundle exec"
 alias bake="bundle exec rake"
-alias date="gdate"
+#alias date="gdate"
 alias cr="crystal"
 
 alias doc="docker-compose"
@@ -48,6 +48,7 @@ alias readlink=greadlink
 
 alias pym='python3 manage.py'
 
-alias cat='bat'
+alias cat='batcat'
+alias fd='fdfind'
 
 alias fmtjson='python -mjson.tool'
