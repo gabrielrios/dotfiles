@@ -53,6 +53,7 @@
   conflicts = diff --name-only --diff-filter=U
   biweekly = !git changelog --since=2.weeks
   mybiweekly = !git biweekly --author=\"$(git config user.name)\"
+  mylog = !git log --all --author=\"$(git config user.name)\" --pretty=format:'%C(yellow)%h %Cblue%cs (%cr)%Creset %s'
 
   n = !"git ls-files | xargs notes | awk -F: '{ print $1,$2; print $3,$4; print $5}' | grcat conf.notes "
 
@@ -144,4 +145,4 @@ fixws-global-tree-and-index = !"\
 	insteadOf = https://gitlab.com/
 
 [interactive]
-  diffFilter = "$(git --exec-path | sed 's/libexec/share/')/contrib/diff-highlight/diff-highlight | less -FRX --tabs=4"
+  diffFilter = "diff-highlight | less -FRX --tabs=4"
