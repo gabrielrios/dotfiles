@@ -43,8 +43,8 @@ alias readlink=greadlink
 
 alias pym='python3 manage.py'
 
-alias cat='batcat'
-alias fd='fdfind'
+alias cat='bat'
+# alias fd='fdfind'
 alias ls='exa --icons'
 alias rg='rg -p'
 alias eml='emacsclient -nw'
