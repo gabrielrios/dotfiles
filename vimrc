@@ -27,7 +27,7 @@ call plug#begin('~/.vim/plugged')
   " You can specify revision/branch/tag.
   Plug 'Shougo/vimshell'
   Plug 'jgdavey/tslime.vim'
-  Plug 'wakatime/vim-wakatime'
+  " Plug 'wakatime/vim-wakatime'
   Plug 'vim-scripts/CSApprox'
   " Plug 'smeggingsmegger/ag.vim'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -419,8 +419,14 @@ set sidescrolloff=15
 set sidescroll=1
 
 " Theming
-set background=light
-colorscheme base16-default-light
+if exists('$BASE16_THEME')
+      \ && (!exists('g:colors_name') || g:colors_name != 'base16-$BASE16_THEME')
+  let base16colorspace=256
+  colorscheme base16-$BASE16_THEME
+else
+  colorscheme base16-default-dark
+endif
+set background=dark
 set laststatus=2
 set cursorline
 set list!                       " Display unprintable characters
@@ -647,10 +653,6 @@ map <Leader>ff gg=G
 nmap =j :%!python -m json.tool<CR>
 map <Leader>d :Dash<Space>
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
 set noshowmode
 
 " Reselect visual block after indent/outdent

@@ -43,6 +43,7 @@ alias readlink=greadlink
 
 alias pym='python3 manage.py'
 
+alias bat='batcat'
 alias cat='bat'
 # alias fd='fdfind'
 alias ls='exa --icons'
