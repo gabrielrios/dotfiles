@@ -146,3 +146,7 @@ fixws-global-tree-and-index = !"\
 
 [interactive]
   diffFilter = "diff-highlight | less -FRX --tabs=4"
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true
