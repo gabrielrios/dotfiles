@@ -1,4 +1,18 @@
-local parsers = { "lua", "vim", "query", "javascript", "html", "css", "ruby" , "yaml" }
+local parsers = {
+  "lua",
+  "vim",
+  "query",
+  "javascript",
+  "html",
+  "css",
+  "ruby" ,
+  "yaml" ,
+  "diff",
+  "json",
+  "scss",
+  "gitcommit",
+  "git_rebase"
+}
 
 require('nvim-treesitter.configs').setup({
 	ensure_installed = parsers,

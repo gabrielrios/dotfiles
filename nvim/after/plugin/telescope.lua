@@ -3,6 +3,7 @@ local actions = require 'telescope.actions'
 
 telescope.load_extension("project")
 telescope.load_extension("file_browser")
+telescope.load_extension("fzf")
 
 telescope.setup({
   pickers = {
@@ -29,8 +30,6 @@ telescope.setup({
     }
   )
 })
-
--- local builtin = require('telescope.builtin')
 
 require("dir-telescope").setup({
       -- these are the default options set

@@ -12,58 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { "folke/which-key.nvim" },
-  { "folke/neoconf.nvim", cmd = "Neoconf" },
-  { "folke/neodev.nvim" },
-
-  { 'slim-template/vim-slim' },
-  {
-    'nvim-telescope/telescope.nvim', tag = '0.1.4',
-    dependencies = { 'nvim-lua/plenary.nvim' }
-  },
-  { 'nvim-telescope/telescope-project.nvim',
-    dependencies = { 'nvim-telescope/telescope-file-browser.nvim' }
-  },
-  { "princejoogie/dir-telescope.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim" } },
-  --
-  -- Themes
-  { "sainnhe/sonokai",priority = 1000 },
-  { "rebelot/kanagawa.nvim" },
-  { "npxbr/gruvbox.nvim" },
-  { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
-  { "savq/melange-nvim" },
-  { "GustavoPrietoP/doom-themes.nvim" },
-  { 'Soares/base16.nvim' },
-  { 'chriskempson/base16-vim' },
-  --
-  {
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    build = ":TSUpdate",
-  },
-  { 'mbbill/undotree'},
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",         -- required
-      "nvim-telescope/telescope.nvim", -- optional
-      "sindrets/diffview.nvim",        -- optional
-      "ibhagwan/fzf-lua",              -- optional
-    },
-    config = true
-  },
-  -- nvim v0.8.0
-  {
-    "kdheepak/lazygit.nvim",
-    -- optional for floating window border decoration
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
-  { 'airblade/vim-gitgutter' },
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
@@ -74,6 +22,53 @@ require("lazy").setup({
     opts = {
     }
   },
+
+  -- Telescope & Extensions
+  {
+    'nvim-telescope/telescope.nvim', tag = '0.1.4',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+  { 'nvim-telescope/telescope-project.nvim',
+    dependencies = { 'nvim-telescope/telescope-file-browser.nvim' }
+  },
+  { "princejoogie/dir-telescope.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" } },
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  
+  -- Themes
+  { "sainnhe/sonokai",priority = 1000 },
+  { "rebelot/kanagawa.nvim" },
+  { "npxbr/gruvbox.nvim" },
+  { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
+  { "savq/melange-nvim" },
+  { "GustavoPrietoP/doom-themes.nvim" },
+  { 'Soares/base16.nvim' },
+  { 'chriskempson/base16-vim' },
+
+  -- Treesitter
+  {
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
+    build = ":TSUpdate",
+  },
+
+  -- Git
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",         -- required
+      "nvim-telescope/telescope.nvim", -- optional
+      "sindrets/diffview.nvim",        -- optional
+      "ibhagwan/fzf-lua",              -- optional
+    },
+    config = true
+  },
+  { 'tpope/vim-fugitive' },
+  { 'airblade/vim-gitgutter' },
+
+  -- Lualine
   {
     'nvim-lualine/lualine.nvim',
     dependencies = {
@@ -82,14 +77,20 @@ require("lazy").setup({
 
   },
 
-  { "alexghergh/nvim-tmux-navigation" },
+  -- Lang specific
+  { 'tpope/vim-rails' },
+  { 'tpope/vim-endwise' },
+  { 'slim-template/vim-slim' },
 
+  -- Etc
+  { "alexghergh/nvim-tmux-navigation" },
   { 'numToStr/Comment.nvim', opts = {} },
   { 'preservim/tagbar' },
   { 'gko/vim-coloresque' },
-  { 'tpope/vim-fugitive' },
+  { 'mbbill/undotree'},
   { 'ludovicchabant/vim-gutentags' },
 
+  -- LSP & SNippets
   -- Uncomment these if you want to manage LSP servers from neovim
   {'williamboman/mason.nvim'},
   {'williamboman/mason-lspconfig.nvim'},
