@@ -54,6 +54,15 @@ require("lazy").setup({
     build = ":TSUpdate",
   },
 
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+  },
+
   -- Git
   {
     "NeogitOrg/neogit",
@@ -99,7 +108,6 @@ require("lazy").setup({
   {'hrsh7th/cmp-nvim-lsp'},
   {'hrsh7th/nvim-cmp'},
   {'L3MON4D3/LuaSnip'},
-
-
+  {'nvimtools/none-ls.nvim' },
 })
 

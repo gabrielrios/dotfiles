@@ -22,6 +22,10 @@ require("which-key").register({
       B = { ":Git blame<CR>", "Blame" },
       L = { ":Git log<CR>", "Log" },
     },
+    o = {
+      name = "Application (open)",
+      p = { ":NvimTreeToggle<CR>", "Open Tree" },
+    },
     p = {
       name = "Project",
       p = { ":Telescope project<CR>", "Switch project" },
