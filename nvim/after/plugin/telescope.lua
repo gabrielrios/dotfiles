@@ -11,6 +11,11 @@ telescope.setup({
       enable_preview = true
     }
   },
+  extensions = {
+    project = {
+      sync_with_nvim_tree = true,
+    }
+  },
   defaults = vim.tbl_extend(
     "force",
     require('telescope.themes').get_ivy(),
@@ -37,3 +42,7 @@ require("dir-telescope").setup({
       no_ignore = false,
       show_preview = true,
     })
+
+
+-- vim.api.nvim_create_autocmd({ "BufEnter" }, { pattern = { "*" }, command = "normal zx", })
+

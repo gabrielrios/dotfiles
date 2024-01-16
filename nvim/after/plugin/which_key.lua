@@ -36,7 +36,8 @@ require("which-key").register({
       d = { ":GrepInCurrentDir<CR>", "Search current dir" },
       p = { ":Telescope live_grep<CR>", "Search project" },
       D = { ":Telescope dir live_grep<CR>", "Search othe directory" },
-      i = { ":TagbarOpenAutoClose<CR>", "Tag bar"},
+      i = { ":Telescope treesitter<CR>", "Tag bar"},
+      I = { ":TagbarOpenAutoClose<CR>", "Tag bar"},
     },
     w = {
       name = "Window",
