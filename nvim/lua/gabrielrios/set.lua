@@ -46,4 +46,3 @@ vim.opt.foldenable = false
 -- vim.opt.wm = 2
 -- vim.opt.textwidth = 79
 --
---

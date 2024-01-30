@@ -41,9 +41,7 @@ require("lazy").setup({
   { "npxbr/gruvbox.nvim" },
   { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
   { "savq/melange-nvim" },
-  { "GustavoPrietoP/doom-themes.nvim" },
-  { 'Soares/base16.nvim' },
-  { 'chriskempson/base16-vim' },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
   -- Treesitter
   {
