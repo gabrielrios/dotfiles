@@ -3,8 +3,10 @@ local parsers = {
   "vim",
   "query",
   "javascript",
+  "embedded_template",
   "html",
   "css",
+  "scss",
   "ruby" ,
   "yaml" ,
   "diff",
@@ -15,12 +17,15 @@ local parsers = {
 }
 
 require('nvim-treesitter.configs').setup({
-	ensure_installed = parsers,
-	sync_install = false,
-	auto_install = true,
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlight = false
-	},
-	indent = { enable = true }
+  ensure_installed = parsers,
+  sync_install = false,
+  auto_install = true,
+  highlight = {
+    enable = parsers,
+    additional_vim_regex_highlight = false
+  },
+  indent = { enable = true },
+  endwise = {
+    enable = true
+  },
 })

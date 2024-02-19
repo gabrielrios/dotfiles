@@ -108,7 +108,7 @@ fixws-global-tree-and-index = !"\
   autosetupmerge = true
 [core]
 	editor = nvim
-	excludesfile = /Users/gabriel/.gitignore_global
+	excludesfile = ~/.gitignore
   autocrlf = false
 [advice]
   statusHints = false

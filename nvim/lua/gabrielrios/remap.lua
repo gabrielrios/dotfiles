@@ -11,3 +11,9 @@ vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
 
 vim.keymap.set("n", "Q", "<nop>")
+
+vim.api.nvim_set_keymap('',  '<C-t>', ':tabnew<CR>',          { noremap = true, silent = true})
+vim.api.nvim_set_keymap('',  '<M-]>', '<CMD>tabnext<CR>',     { noremap = true, silent = true})
+vim.api.nvim_set_keymap('!', '<M-]>', '<CMD>tabnext<CR>',     { noremap = true, silent = true})
+vim.api.nvim_set_keymap('',  '<M-[>', '<CMD>tabprevious<CR>', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('!', '<M-[>', '<CMD>tabprevious<CR>', { noremap = true, silent = true})

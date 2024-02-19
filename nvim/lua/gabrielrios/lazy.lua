@@ -50,8 +50,12 @@ require("lazy").setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      "RRethy/nvim-treesitter-endwise", -- Needed to prevent treesitter ident issue with Ruby: https://github.com/tree-sitter/tree-sitter-ruby/issues/230#issuecomment-1312403487
+      "yioneko/nvim-yati"
     },
-    build = ":TSUpdate",
+    build = function ()
+      require("nvim-treesitter.install").update({ with_sync = true })
+    end
   },
 
   {
@@ -87,6 +91,7 @@ require("lazy").setup({
   },
 
   -- Lang specific
+  { 'vim-ruby/vim-ruby' },
   { 'tpope/vim-rails' },
   { 'tpope/vim-endwise' },
   { 'slim-template/vim-slim' },
@@ -99,15 +104,19 @@ require("lazy").setup({
   { 'mbbill/undotree'},
   { 'ludovicchabant/vim-gutentags' },
 
-  -- LSP & SNippets
-  -- Uncomment these if you want to manage LSP servers from neovim
-  {'williamboman/mason.nvim'},
-  {'williamboman/mason-lspconfig.nvim'},
-  {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
-  {'neovim/nvim-lspconfig'},
-  {'hrsh7th/cmp-nvim-lsp'},
-  {'hrsh7th/nvim-cmp'},
-  {'L3MON4D3/LuaSnip'},
-  {'nvimtools/none-ls.nvim' },
+  {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      --- Uncomment the two plugins below if you want to manage the language servers from neovim
+      --- and read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
+      { 'williamboman/mason.nvim' },
+      { 'williamboman/mason-lspconfig.nvim' },
+      { 'neovim/nvim-lspconfig' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/nvim-cmp' },
+      { 'L3MON4D3/LuaSnip' },
+    },
+  }
 })
 
