@@ -26,6 +26,14 @@ require("which-key").register({
       name = "Application (open)",
       p = { ":NvimTreeToggle<CR>", "Open Tree" },
     },
+    l = {
+      name = "LLM",
+      g = {":Gen<CR>", "Gen Menu"},
+      u = {":Gen Unit_Test<CR>", "Gen Unit test for selection"},
+      s = {":Gen System_Test<CR>", "Gen System test for selection"},
+      f = {":Gen Feature_Spec<CR>", "Gen Feature Spec for selection"},
+      m = {":Gen Unit_Spec<CR>", "Gen Feature Spec for selection"},
+    },
     p = {
       name = "Project",
       p = { ":Telescope project<CR>", "Switch project" },

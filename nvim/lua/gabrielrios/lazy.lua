@@ -79,6 +79,17 @@ require("lazy").setup({
   { 'tpope/vim-fugitive' },
   { 'airblade/vim-gitgutter' },
 
+
+  -- Minimal configuration
+  { "David-Kunz/gen.nvim" },
+  -- {
+  --   "nomnivore/ollama.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim"
+  --   },
+  --   cmd = { "Ollama", "OllamaModel", "OllamaServe", "OllamaServeStop" },
+  -- },
+
   -- Lualine
   {
     'nvim-lualine/lualine.nvim',
