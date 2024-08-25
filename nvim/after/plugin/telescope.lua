@@ -16,10 +16,11 @@ telescope.setup({
       sync_with_nvim_tree = true,
     }
   },
-  defaults = vim.tbl_extend(
-    "force",
-    require('telescope.themes').get_ivy(),
-    {
+  defaults = {
+    -- vim.tbl_extend(
+    -- "force",
+    -- require('telescope.themes').get_ivy(),
+    -- {
       mappings = {
         i = {
           ["<C-j>"] = {
@@ -33,7 +34,7 @@ telescope.setup({
         }
       }
     }
-  )
+  -- )
 })
 
 require("dir-telescope").setup({

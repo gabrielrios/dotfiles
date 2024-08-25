@@ -1,6 +1,6 @@
 [user]
   name = Gabriel Rios
-  email = gabrielfalcaorios@gmail.com
+  email = gabriel@donorbox.org
 [color]
   ui = 1
 [color "branch"]
@@ -95,7 +95,7 @@ fixws-global-tree-and-index = !"\
 [mergetool]
   prompt = false
 [mergetool "vimdiff"]
-  cmd="vim -c 'Gdiff' $MERGED"
+  cmd="nvim -d 'Gdiff' $MERGED"
   keepbackup=false
 [merge]
   summary = true
@@ -119,12 +119,6 @@ fixws-global-tree-and-index = !"\
   enabled = 1
 [push]
   default = tracking
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [init]
   templatedir = ~/.git_template
 [help]

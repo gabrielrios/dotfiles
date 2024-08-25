@@ -22,6 +22,7 @@ require("lazy").setup({
     opts = {
     }
   },
+  { 'echasnovski/mini.nvim', version = false },
 
   -- Telescope & Extensions
   {
@@ -126,6 +127,9 @@ require("lazy").setup({
       { 'hrsh7th/nvim-cmp' },
       { 'L3MON4D3/LuaSnip' },
     },
-  }
+  },
+
+  -- artificial inteligence
+  { 'github/copilot.vim' }
 })
 

@@ -3,7 +3,7 @@ local lsp_zero = require('lsp-zero')
 lsp_zero.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
   -- to learn the available actions
-  lsp_zero.default_keymaps({buffer = bufnr})
+  lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
 lsp_zero.set_sign_icons({
@@ -13,6 +13,28 @@ lsp_zero.set_sign_icons({
   info = '»'
 })
 
+
+-- lsp_zero.format_on_save({
+--   format_opts = {
+--     async = false,
+--     timeout_ms = 10000,
+--   },
+--   servers = {
+--     ['solargraph'] = {'ruby'},
+--   }
+-- })
+--
+-- lsp_zero.on_attach(function(client, bufnr)
+--   lsp_zero.default_keymaps({buffer = bufnr})
+--
+--   -- make sure you use clients with formatting capabilities
+--   -- otherwise you'll get a warning message
+--   if client.supports_method('textDocument/formatting') then
+--     lsp_zero.buffer_autoformat()
+--   end
+-- end)
+
+
 local cmp_default_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('mason').setup({})
@@ -20,7 +42,7 @@ require('mason-lspconfig').setup({
   ensure_installed = { 'cssls', 'html', 'jsonls', 'lua_ls', 'tsserver', 'yamlls', 'emmet_language_server', 'solargraph' },
   handlers = {
     lsp_zero.default_setup,
-    solargraph = function ()
+    solargraph = function()
       require('lspconfig').solargraph.setup({
         capabilities = cmp_default_capabilities
       })
@@ -29,7 +51,7 @@ require('mason-lspconfig').setup({
       local lua_opts = lsp_zero.nvim_lua_ls()
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
-    html = function ()
+    html = function()
       require('lspconfig').html.setup({
         filetypes = { 'html', 'eruby' }
       })
@@ -39,11 +61,11 @@ require('mason-lspconfig').setup({
 
 local cmp = require('cmp')
 local luasnip = require('luasnip')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
   completion = {
-    completeopt = 'menuone,noselect'
+    completeopt = 'menuone,popup,noselect'
   },
   sources = {
     { name = 'nvim_lsp' },
@@ -64,9 +86,9 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-k>']     = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-j>']     = cmp.mapping.select_next_item(cmp_select),
+    ['<Tab>']     = cmp.mapping.confirm({ select = true }),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<TAB>']     = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -80,7 +102,6 @@ cmp.setup({
       else
         fallback()
       end
-
     end, { 'i', 's' }),
     ['<S-Tab>']   = cmp.mapping(function(fallback)
       if cmp.visible() then
