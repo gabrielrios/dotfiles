@@ -1,7 +1,6 @@
 # ruby/rails
 alias be="bundle exec"
 alias bake="bundle exec rake"
-#alias date="gdate"
 alias cr="crystal"
 
 alias doc="docker-compose"
@@ -44,12 +43,17 @@ alias readlink=greadlink
 
 alias pym='python3 manage.py'
 
-# alias bat='batcat'
-alias cat='bat'
-# alias fd='fdfind'
 alias ls='eza --icons'
 alias rg='rg -p'
 alias eml='emacsclient -nw'
 
 alias fmtjson='python -mjson.tool'
 alias tc='clear; tmux clear-history; clear'
+
+if [ "$(uname)" = "Darwin" ]; then
+  alias cat='bat'
+  alias date="gdate"
+else
+  alias fd='fdfind'
+  alias cat='batcat'
+fi
