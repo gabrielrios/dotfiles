@@ -13,7 +13,8 @@ local parsers = {
   "json",
   "scss",
   "gitcommit",
-  "git_rebase"
+  "git_rebase",
+  "typescript"
 }
 
 require('nvim-treesitter.configs').setup({
