@@ -29,20 +29,14 @@ require("lazy").setup({
     'nvim-telescope/telescope.nvim', tag = '0.1.4',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
-  { 'nvim-telescope/telescope-project.nvim',
-    dependencies = { 'nvim-telescope/telescope-file-browser.nvim' }
-  },
+  { 'nvim-telescope/telescope-file-browser.nvim' },
   { "princejoogie/dir-telescope.nvim",
     dependencies = { "nvim-telescope/telescope.nvim" } },
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-  
+
   -- Themes
-  { "sainnhe/sonokai",priority = 1000 },
   { "rebelot/kanagawa.nvim" },
   { "npxbr/gruvbox.nvim" },
-  { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
-  { "savq/melange-nvim" },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
   -- Treesitter
   {
@@ -80,24 +74,12 @@ require("lazy").setup({
   { 'tpope/vim-fugitive' },
   { 'airblade/vim-gitgutter' },
 
-
-  -- Minimal configuration
-  { "David-Kunz/gen.nvim" },
-  -- {
-  --   "nomnivore/ollama.nvim",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim"
-  --   },
-  --   cmd = { "Ollama", "OllamaModel", "OllamaServe", "OllamaServeStop" },
-  -- },
-
   -- Lualine
   {
     'nvim-lualine/lualine.nvim',
     dependencies = {
       "nvim-tree/nvim-web-devicons"
     }
-
   },
 
   -- Lang specific
@@ -134,40 +116,68 @@ require("lazy").setup({
     opts = {}, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
     keys = {
-      {
-        "<leader>x",
-        "<cmd>Trouble diagnostics toggle<cr>",
-        desc = "Diagnostics (Trouble)",
-      },
-      {
-        "<leader>xX",
-        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-        desc = "Buffer Diagnostics (Trouble)",
-      },
-      {
-        "<leader>cs",
-        "<cmd>Trouble symbols toggle focus=false<cr>",
-        desc = "Symbols (Trouble)",
-      },
-      {
-        "<leader>cl",
-        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-        desc = "LSP Definitions / references / ... (Trouble)",
-      },
-      {
-        "<leader>xL",
-        "<cmd>Trouble loclist toggle<cr>",
-        desc = "Location List (Trouble)",
-      },
-      {
-        "<leader>xQ",
-        "<cmd>Trouble qflist toggle<cr>",
-        desc = "Quickfix List (Trouble)",
-      },
     },
   },
 
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
+  },
+
   -- artificial inteligence
-  { 'github/copilot.vim' }
+  { 'github/copilot.vim' },
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    lazy = false,
+    version = false, -- set this if you want to always pull the latest change
+    opts = {
+    },
+    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    build = "make",
+    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      -- "zbirenbaum/copilot.lua", -- for providers='copilot'
+      {
+        -- support for image pasting
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          -- recommended settings
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            -- required for Windows users
+            use_absolute_path = true,
+          },
+        },
+      },
+      {
+        -- Make sure to set this up properly if you have lazy=true
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
+  }
+
 })
 

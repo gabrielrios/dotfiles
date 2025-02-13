@@ -13,33 +13,11 @@ lsp_zero.set_sign_icons({
   info = '»'
 })
 
-
--- lsp_zero.format_on_save({
---   format_opts = {
---     async = false,
---     timeout_ms = 10000,
---   },
---   servers = {
---     ['solargraph'] = {'ruby'},
---   }
--- })
---
--- lsp_zero.on_attach(function(client, bufnr)
---   lsp_zero.default_keymaps({buffer = bufnr})
---
---   -- make sure you use clients with formatting capabilities
---   -- otherwise you'll get a warning message
---   if client.supports_method('textDocument/formatting') then
---     lsp_zero.buffer_autoformat()
---   end
--- end)
-
-
 local cmp_default_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = { 'cssls', 'html', 'jsonls', 'lua_ls', 'tsserver', 'yamlls', 'emmet_language_server', 'solargraph' },
+  ensure_installed = { 'cssls', 'html', 'jsonls', 'lua_ls', 'ts_ls', 'yamlls', 'emmet_language_server', 'solargraph' },
   handlers = {
     lsp_zero.default_setup,
     solargraph = function()
