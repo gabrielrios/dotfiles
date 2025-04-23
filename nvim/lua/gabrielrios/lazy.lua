@@ -29,6 +29,7 @@ require("lazy").setup({
     'nvim-telescope/telescope.nvim', tag = '0.1.4',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
+  {'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'},
   { 'nvim-telescope/telescope-file-browser.nvim' },
   { "princejoogie/dir-telescope.nvim",
     dependencies = { "nvim-telescope/telescope.nvim" } },

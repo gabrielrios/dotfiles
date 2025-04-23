@@ -39,10 +39,10 @@ vim.g.mapleader = " "
 
 vim.opt.clipboard = 'unnamedplus'
 
-vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldmethod = "expr"
-vim.opt.foldenable = false
-
+-- vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldenable = false
+--
 -- vim.opt.wm = 2
 -- vim.opt.textwidth = 79
 --
