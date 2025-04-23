@@ -30,6 +30,7 @@ wk.add(
     { "<leader>si", ":Telescope treesitter<CR>", desc = "Tag bar" },
     { "<leader>sp", ":Telescope live_grep<CR>", desc = "Search project" },
     { "<leader>t", group = "Toggles" },
+    { "<leader>ta", ":AvanteToggle<CR>", desc = "Toggle Avante Sidebar" },
     { "<leader>tc", ":Telescope colorscheme<CR>", desc = "Toggle colors" },
     { "<leader>tn", ":set number!<CR>", desc = "Toggle number" },
     { "<leader>tr", ":set relativenumber!<CR>", desc = "Toggle relative number" },
@@ -187,10 +188,16 @@ require('which-key').add {
     },
     {
       '<leader>ac',
-      function()
-        require('avante.api').ask { question = avante_complete_code }
-      end,
-      desc = 'Complete Code(ask)',
+      ":AvanteClear<CR>",
+      -- function()
+      --   require('avante.api').ask { question = avante_complete_code }
+      -- end,
+      desc = 'Clear history',
+    },
+    {
+      '<leader>af',
+      ':AvanteFocus<CR>',
+      desc = 'Focus',
     },
     {
       '<leader>ad',
